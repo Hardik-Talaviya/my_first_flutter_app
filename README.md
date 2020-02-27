@@ -1,11 +1,10 @@
 # my_first_flutter_app
 
-A new Flutter application.
+A new Flutter application developed by Hardik Talaviya.
 
-# Splash Screen
+# Screen Shots
 
-![alt text](https://raw.githubusercontent.com/Hardik-Talaviya/my_first_flutter_app/master/screenshots/Splash%20Screen.png)
-
+![alt text](https://raw.githubusercontent.com/Hardik-Talaviya/my_first_flutter_app/master/screenshots/Splash%20Screen.png)  ![alt text](https://raw.githubusercontent.com/Hardik-Talaviya/my_first_flutter_app/master/screenshots/Login%20Screen.png)  ![alt text](https://raw.githubusercontent.com/Hardik-Talaviya/my_first_flutter_app/master/screenshots/Fancy%20Drawer.png)  ![alt text](https://raw.githubusercontent.com/Hardik-Talaviya/my_first_flutter_app/master/screenshots/Normal%20Drawer.png)  ![alt text](https://raw.githubusercontent.com/Hardik-Talaviya/my_first_flutter_app/master/screenshots/Bottom%20Navigation%20Bar.png)  ![alt text](https://raw.githubusercontent.com/Hardik-Talaviya/my_first_flutter_app/master/screenshots/PopUp%20Menu.png)  ![alt text](https://raw.githubusercontent.com/Hardik-Talaviya/my_first_flutter_app/master/screenshots/Alert%20Dialog.png)
 
 ## Getting Started
 
