@@ -2,6 +2,11 @@
 
 A new Flutter application.
 
+# Splash Screen
+
+![alt text](https://raw.githubusercontent.com/Hardik-Talaviya/my_first_flutter_app/master/screenshots/Splash%20Screen.jpg)
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
