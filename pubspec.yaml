@@ -43,7 +43,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - logo.png
+    - ic_launcher.png
     - nav_menu_header.jpg
   fonts:
     - family: Montserrat

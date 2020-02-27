@@ -108,7 +108,7 @@ class _LoginScreenStatefulWidget extends State<LoginScreenStatefulWidget> {
               SizedBox(
                 height: 120.0,
                 child: Image.asset(
-                  "assets/logo.png",
+                  "assets/ic_launcher.png",
                   fit: BoxFit.contain,
                 ),
               ),
