@@ -12,7 +12,7 @@ class DrawerItemModel {
 
 class NormalDrawer extends StatefulWidget {
   final drawerItemModel = [
-    new DrawerItemModel("Fragment 1", Icons.alarm),
+    new DrawerItemModel("Bottom Navigation", Icons.alarm),
     new DrawerItemModel("Fragment 2", Icons.info),
     new DrawerItemModel("Fragment 3", Icons.wallpaper)
   ];

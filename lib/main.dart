@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter_app/pages/FancyDrawer.dart';
 import 'package:my_first_flutter_app/pages/LoginScreen.dart';
+import 'package:my_first_flutter_app/pages/NormalDrawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(SplashScreen());
@@ -41,7 +42,8 @@ class _SplashScreenStatefulWidget extends State<SplashScreenStatefulWidget> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => FancyDrawer(),
+//              builder: (context) => FancyDrawer(),
+              builder: (context) => NormalDrawer(),
             ));
       });
     } else {
