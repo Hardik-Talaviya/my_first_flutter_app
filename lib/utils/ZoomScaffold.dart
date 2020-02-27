@@ -176,6 +176,7 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
       children: [
         Container(
           child: Scaffold(
+            resizeToAvoidBottomPadding: false,
             body: widget.menuScreen,
           ),
         ),

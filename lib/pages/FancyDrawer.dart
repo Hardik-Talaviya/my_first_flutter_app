@@ -33,7 +33,8 @@ class FancyDrawerStateful extends StatefulWidget {
   _FancyDrawerStateful createState() => new _FancyDrawerStateful();
 }
 
-class _FancyDrawerStateful extends State<FancyDrawerStateful> with TickerProviderStateMixin {
+class _FancyDrawerStateful extends State<FancyDrawerStateful>
+    with TickerProviderStateMixin {
   MenuController menuController;
   int selectedDrawerIndex = 0;
 
@@ -57,9 +58,9 @@ class _FancyDrawerStateful extends State<FancyDrawerStateful> with TickerProvide
       default:
         return Center(
             child: Text(
-              "No Fragment Found",
-              style: TextStyle(color: Colors.red, fontSize: 18.0),
-            ));
+          "No Fragment Found",
+          style: TextStyle(color: Colors.red, fontSize: 18.0),
+        ));
         break;
     }
   }
@@ -87,8 +88,10 @@ class _FancyDrawerStateful extends State<FancyDrawerStateful> with TickerProvide
         new Column(
           children: <Widget>[
             new ListTile(
-              leading: new Icon(widget.drawerItemModel[i].icon,color: Colors.white),
-              title: new Text(widget.drawerItemModel[i].title,style: TextStyle(color: Colors.white)),
+              leading:
+                  new Icon(widget.drawerItemModel[i].icon, color: Colors.white),
+              title: new Text(widget.drawerItemModel[i].title,
+                  style: TextStyle(color: Colors.white)),
               selected: i == selectedDrawerIndex,
               onTap: () => updateSelectedDrawerIndex(i),
             ),
@@ -119,24 +122,28 @@ class _FancyDrawerStateful extends State<FancyDrawerStateful> with TickerProvide
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(right: 16,left: 16),
+                      padding: const EdgeInsets.only(right: 10, left: 16),
                       child: CircleAvatar(
-                        backgroundImage: NetworkImage("https://avatars2.githubusercontent.com/u/48587814?s=400&v=4"),
+                        radius: 30.0,
+                        backgroundImage: NetworkImage(
+                            "https://avatars2.githubusercontent.com/u/48587814?s=400&v=4"),
                       ),
                     ),
-                    Text(
-                      'Hardik Talaviya',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
+                    Flexible(
+                      child: Text(
+                        'Hardik Talaviya',
+                        overflow: TextOverflow.visible,
+                        softWrap: true,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 19,
+                        ),
                       ),
                     )
                   ],
                 ),
                 Spacer(),
-                Column(
-                    children: drawerOptions
-                ),
+                Column(children: drawerOptions),
                 Spacer(),
                 ListTile(
                   onTap: () {},
@@ -165,8 +172,7 @@ class _FancyDrawerStateful extends State<FancyDrawerStateful> with TickerProvide
         contentScreen: Layout(
             contentBuilder: (cc) => Container(
 //                color: Colors.white,
-              child: showDrawerFragment(selectedDrawerIndex)
-            )),
+                child: showDrawerFragment(selectedDrawerIndex))),
       ),
     );
   }

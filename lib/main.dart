@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter_app/pages/FancyDrawer.dart';
 import 'package:my_first_flutter_app/pages/LoginScreen.dart';
-import 'package:my_first_flutter_app/pages/NormalDrawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(SplashScreen());
@@ -42,8 +41,7 @@ class _SplashScreenStatefulWidget extends State<SplashScreenStatefulWidget> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-//              builder: (context) => FancyDrawer(),
-              builder: (context) => NormalDrawer(),
+              builder: (context) => FancyDrawer(),
             ));
       });
     } else {
@@ -63,13 +61,29 @@ class _SplashScreenStatefulWidget extends State<SplashScreenStatefulWidget> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Text(
-          'Splash Screen',
-          style: TextStyle(
-            fontSize: 40.0,
-            color: Colors.blue,
-            fontWeight: FontWeight.bold,
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 90.0,
+              child: Image.asset(
+                "assets/ic_launcher.png",
+                fit: BoxFit.contain,
+              ),
+            ),
+            SizedBox(
+                height: 15.0
+            ),
+            Text(
+              'Splash Screen',
+              style: TextStyle(
+                fontSize: 25.0,
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
     );
