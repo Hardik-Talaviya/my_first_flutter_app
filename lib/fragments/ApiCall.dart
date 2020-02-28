@@ -11,6 +11,7 @@ class ApiCall extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: new Scaffold(
           body: new Container(
+            color: Colors.white,
         child: new FutureBuilder<List<BeerListModel>>(
           future: fetchUsersFromGithub(),
           builder: (context, snapshot) {
@@ -22,7 +23,7 @@ class ApiCall extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         new Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           child: ListTile(
                             title: Text(snapshot.data[index].name),
                             subtitle: Text(snapshot.data[index].tagline),
@@ -35,7 +36,7 @@ class ApiCall extends StatelessWidget {
                                 )),
                           ),
                         ),
-                        new Divider(height: 30)
+                        new Divider(height: 30,color: Colors.grey)
                       ],
                     );
                   });
