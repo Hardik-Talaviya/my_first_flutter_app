@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter_app/fragments/BottomNavigation.dart';
-import 'package:my_first_flutter_app/fragments/SecondFragment.dart';
+import 'package:my_first_flutter_app/fragments/ApiCall.dart';
 import 'package:my_first_flutter_app/fragments/ThirdFragment.dart';
 import 'package:my_first_flutter_app/utils/ZoomScaffold.dart';
 import 'package:provider/provider.dart';
@@ -24,8 +24,8 @@ class FancyDrawerStateful extends StatefulWidget {
       "https://celebritypets.net/wp-content/uploads/2016/12/Adriana-Lima.jpg";
 
   final drawerItemModel = [
-    new DrawerItemModel("Bottom Navigation", Icons.alarm),
-    new DrawerItemModel("Fragment 2", Icons.info),
+    new DrawerItemModel("Bottom Navigation", Icons.navigation),
+    new DrawerItemModel("Api Call", Icons.list),
     new DrawerItemModel("Fragment 3", Icons.wallpaper)
   ];
 
@@ -50,7 +50,7 @@ class _FancyDrawerStateful extends State<FancyDrawerStateful>
         return new BottomNavigation();
         break;
       case 1:
-        return new SecondFragment();
+        return new ApiCall();
         break;
       case 2:
         return new ThirdFragment();
@@ -102,6 +102,7 @@ class _FancyDrawerStateful extends State<FancyDrawerStateful>
     return ChangeNotifierProvider(
       builder: (context) => menuController,
       child: ZoomScaffold(
+        title: widget.drawerItemModel[selectedDrawerIndex].title,
         menuScreen: GestureDetector(
           onPanUpdate: (details) {
             //on swiping left

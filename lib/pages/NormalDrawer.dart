@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter_app/fragments/BottomNavigation.dart';
-import 'package:my_first_flutter_app/fragments/SecondFragment.dart';
+import 'package:my_first_flutter_app/fragments/ApiCall.dart';
 import 'package:my_first_flutter_app/fragments/ThirdFragment.dart';
 
 class DrawerItemModel {
@@ -12,8 +12,8 @@ class DrawerItemModel {
 
 class NormalDrawer extends StatefulWidget {
   final drawerItemModel = [
-    new DrawerItemModel("Bottom Navigation", Icons.alarm),
-    new DrawerItemModel("Fragment 2", Icons.info),
+    new DrawerItemModel("Bottom Navigation", Icons.navigation),
+    new DrawerItemModel("Api Call", Icons.list),
     new DrawerItemModel("Fragment 3", Icons.wallpaper)
   ];
 
@@ -32,7 +32,7 @@ class NormalDrawerState extends State<NormalDrawer> {
         return new BottomNavigation();
         break;
       case 1:
-        return new SecondFragment();
+        return new ApiCall();
         break;
       case 2:
         return new ThirdFragment();

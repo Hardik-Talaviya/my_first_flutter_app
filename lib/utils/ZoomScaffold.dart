@@ -6,8 +6,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ZoomScaffold extends StatefulWidget {
   final Widget menuScreen;
   final Layout contentScreen;
+  final String title;
 
   ZoomScaffold({
+    this.title,
     this.menuScreen,
     this.contentScreen,
   });
@@ -23,7 +25,7 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
   Curve slideOutCurve = new Interval(0.0, 1.0, curve: Curves.easeOut);
   Curve slideInCurve = new Interval(0.0, 1.0, curve: Curves.easeOut);
 
-  _logout() async{
+  _logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('isLogin', false);
 
@@ -34,7 +36,7 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
         ));
   }
 
-  void _showDialog(String title,String content) {
+  void _showDialog(String title, String content) {
     // flutter defined function
     showDialog(
       context: context,
@@ -46,13 +48,18 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
-              child: new Text("YES",style: TextStyle(fontWeight: FontWeight.bold,)),
+              child: new Text("YES",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  )),
               onPressed: () {
                 Navigator.of(context).pop();
                 _logout();
               },
-            ),new FlatButton(
-              child: new Text("NO",style: TextStyle(fontWeight: FontWeight.bold)),
+            ),
+            new FlatButton(
+              child:
+                  new Text("NO", style: TextStyle(fontWeight: FontWeight.bold)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -63,12 +70,12 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
     );
   }
 
-  getMenuPosition(int position){
-    switch(position){
+  getMenuPosition(int position) {
+    switch (position) {
       case 1:
         break;
       case 2:
-        _showDialog("Logout","Are you sure to logout?");
+        _showDialog("Logout", "Are you sure to logout?");
         break;
     }
   }
@@ -85,6 +92,8 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
         child: Scaffold(
           backgroundColor: Colors.white,
           appBar: new AppBar(
+              title: new Text(widget.title,
+                  style: new TextStyle(color: Colors.blue, fontSize: 19.0)),
               actionsIconTheme: IconThemeData(color: Colors.blue),
               backgroundColor: Colors.white,
               elevation: 0.0,
@@ -94,7 +103,8 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
                     color: Colors.blue,
                   ),
                   onPressed: () {
-                    Provider.of<MenuController>(context, listen: true).toggle();
+                    Provider.of<MenuController>(context, listen: true)
+                        .toggle();
                   }),
               actions: <Widget>[
                 PopupMenuButton<int>(
@@ -108,7 +118,7 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
                       child: Text("Logout"),
                     ),
                   ],
-                  onSelected: (int)=>getMenuPosition(int),
+                  onSelected: (int) => getMenuPosition(int),
                 ),
               ]),
           body: widget.contentScreen.contentBuilder(context),
