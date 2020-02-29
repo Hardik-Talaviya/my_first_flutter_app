@@ -28,7 +28,6 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
   _logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('isLogin', false);
-
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(

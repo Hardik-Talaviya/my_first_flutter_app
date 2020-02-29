@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_flutter_app/fragments/BottomNavigation.dart';
 import 'package:my_first_flutter_app/fragments/ApiCall.dart';
+import 'package:my_first_flutter_app/fragments/BottomNavigation.dart';
 import 'package:my_first_flutter_app/fragments/ThirdFragment.dart';
 import 'package:my_first_flutter_app/utils/ZoomScaffold.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+String email = "Loading....";
 
 class FancyDrawer extends StatelessWidget {
   @override
@@ -65,9 +68,18 @@ class _FancyDrawerStateful extends State<FancyDrawerStateful>
     }
   }
 
+  _getEmail() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      email = prefs.getString('email');
+    });
+  }
+
   @override
   void initState() {
     super.initState();
+
+    _getEmail();
 
     menuController = new MenuController(
       vsync: this,
@@ -115,7 +127,7 @@ class _FancyDrawerStateful extends State<FancyDrawerStateful>
                 top: 62,
                 left: 10,
                 bottom: 8,
-                right: MediaQuery.of(context).size.width / 2.9),
+                right: MediaQuery.of(context).size.width / 3.9),
 //            color: Color(0xff454dff),
             color: Colors.blue,
             child: Column(
@@ -131,14 +143,30 @@ class _FancyDrawerStateful extends State<FancyDrawerStateful>
                       ),
                     ),
                     Flexible(
-                      child: Text(
-                        'Hardik Talaviya',
-                        overflow: TextOverflow.visible,
-                        softWrap: true,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 19,
-                        ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Hardik Talaviya',
+                            overflow: TextOverflow.visible,
+                            softWrap: true,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            email,
+                            overflow: TextOverflow.visible,
+                            softWrap: true,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
                       ),
                     )
                   ],

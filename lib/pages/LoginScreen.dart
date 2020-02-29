@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_flutter_app/pages/SignUpScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'FancyDrawer.dart';
@@ -11,6 +12,12 @@ class LoginScreen extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       title: _title,
+      builder: (context, child) {
+        return ScrollConfiguration(
+          behavior: MyBehavior(),
+          child: child,
+        );
+      },
       home: LoginScreenStatefulWidget(),
       debugShowCheckedModeBanner: false,
     );
@@ -36,11 +43,11 @@ class _LoginScreenStatefulWidget extends State<LoginScreenStatefulWidget> {
   _setIsLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('isLogin', true);
+    prefs.setString('email', emailController.text.trim());
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => FancyDrawer(),
-//                  builder: (context) => NormalDrawer(),
         ));
   }
 
@@ -53,7 +60,7 @@ class _LoginScreenStatefulWidget extends State<LoginScreenStatefulWidget> {
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
-          labelText: 'Enter your Email',
+          labelText: 'Email',
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(20.0))),
     );
@@ -63,14 +70,13 @@ class _LoginScreenStatefulWidget extends State<LoginScreenStatefulWidget> {
       style: style,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
-          labelText: 'Enter your Password',
+          labelText: 'Password',
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(20.0))),
     );
     final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(20.0),
-//      color: Color(0xff01A0C7),
       color: Colors.blue,
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
@@ -93,38 +99,63 @@ class _LoginScreenStatefulWidget extends State<LoginScreenStatefulWidget> {
       ),
     );
 
+    final signUp = Container(
+      margin: EdgeInsets.only(top: 15.0),
+      child: Align(
+        alignment: Alignment.center,
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SignUpScreen(),
+//                  builder: (context) => NormalDrawer(),
+                ));
+          },
+          child: Text("Don't have account? Click here",
+              textAlign: TextAlign.right,
+              style: TextStyle(fontSize: 16.0, color: Colors.blue,fontWeight: FontWeight.bold)),
+        ),
+      ),
+    );
+
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text('Login Screen'),
+        title: Text('Login'),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                height: 120.0,
-                child: Image.asset(
-                  "assets/ic_launcher.png",
-                  fit: BoxFit.contain,
-                ),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(30.0,30.0,30.0,0.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 100.0,
+                    child: Image.asset(
+                      "assets/ic_launcher.png",
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  SizedBox(height: 45.0),
+                  emailField,
+                  SizedBox(height: 25.0),
+                  passwordField,
+                  SizedBox(
+                    height: 35.0,
+                  ),
+                  loginButton,
+                ],
               ),
-              SizedBox(height: 45.0),
-              emailField,
-              SizedBox(height: 25.0),
-              passwordField,
-              SizedBox(
-                height: 35.0,
-              ),
-              loginButton,
-              SizedBox(
-                height: 15.0,
-              ),
-            ],
-          ),
+            ),
+            signUp,
+            SizedBox(
+              height: 15.0,
+            ),
+          ],
         ),
       ),
     );
